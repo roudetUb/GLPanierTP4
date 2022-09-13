@@ -9,12 +9,18 @@ public class Panier {
 	
     //groupe 1
     public Panier(int contenanceMax){  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
-	
+        this.contenanceMax = contenanceMax;
+	    this.fruits = new ArrayList<Fruit>(this.contenanceMax);
     }
 
     @Override
     public String toString(){  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        return "";
+        String s = "Votre panier contient: ";
+        for(int i = 0; i < this.fruits.size(); i++)
+        {
+            s += this.fruits.get(i) + " ";
+        }
+        return s;
     }
     
     //groupe 2
@@ -23,7 +29,7 @@ public class Panier {
     }
 
     public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
-      
+
     }
 
     public int getTaillePanier(){  //accesseur retournant la taille allouee pour l'attibut fruits
@@ -36,10 +42,11 @@ public class Panier {
 
     //groupe 3
     public Fruit getFruit(int i){  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
-	return null;
+	return this.fruits.get(i);
     }
     
     public void setFruit(int i, Fruit f){  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
+    }
 
     public boolean estVide(){  //predicat indiquant que le panier est vide
 	return false;
@@ -51,9 +58,12 @@ public class Panier {
 
     //groupe 4
     public void ajout(Fruit o) throws PanierPleinException{  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-        if(this.estPlein())
-     	   throw new PanierPleinException();
-        this.getFruits().add(o);
+        try{
+            this.getFruits().add(o);
+        }
+        catch(PanierPleinException e){
+            throw e;
+        }     
     }
 
     //groupe 5
@@ -80,6 +90,16 @@ public class Panier {
     //tests
     public static void main (String[] args){
     	//Ecrire ici vos tests
+    	Panier p = new Panier(1);
+    	Fruit f1 = new Kiwi();
+    	p.ajout(f1);
+    	
+    	Fruit f = p.getFruit(0);
+    	if(f != null)
+    	    System.out.println("getFruit OK");
+    	else
+    	    System.out.println("getFruit FALSE");
+    	
 	System.out.println("premier test Panier");
     }
 }
