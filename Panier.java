@@ -25,7 +25,7 @@ public class Panier {
     
     //groupe 2
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
-       return null;
+       return this.fruits;
     }
 
     public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
@@ -33,7 +33,7 @@ public class Panier {
     }
 
     public int getTaillePanier(){  //accesseur retournant la taille allouee pour l'attibut fruits
-        return 0;
+        return this.fruits.size();
     }
     
     public int getContenanceMax(){  //accesseur du second attribut
@@ -48,12 +48,14 @@ public class Panier {
     public void setFruit(int i, Fruit f){  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
     }
 
+
+
     public boolean estVide(){  //predicat indiquant que le panier est vide
-	return false;
+	    return !this.estPlein();
     }
     
     public boolean estPlein(){  //predicat indiquant que le panier est plein
-	return false;
+	    return false;
     }
 
     //groupe 4
@@ -88,7 +90,7 @@ public class Panier {
     }
     
     //tests
-    public static void main (String[] args){
+    public static void main (String[] args) throws PanierPleinException{
     	//Ecrire ici vos tests
     	Panier p = new Panier(1);
     	Fruit f1 = new Kiwi();
@@ -101,5 +103,12 @@ public class Panier {
     	    System.out.println("getFruit FALSE");
     	
 	System.out.println("premier test Panier");
+
+    Pomme pomme = new Pomme(2, "Bénin");
+    System.out.println(pomme.getPrix());
+
+    Panier panier = new Panier(10);
+    panier.ajout(pomme);
+    System.out.println(panier.getTaillePanier());
     }
 }
