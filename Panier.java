@@ -53,8 +53,6 @@ public class Panier {
         this.getFruits().set(i, f);
     }
 
-    }
-    
     public boolean estVide(){  //predicat indiquant que le panier est vide
     	if(this.getFruits().isEmpty()) {
             return true;
