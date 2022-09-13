@@ -53,6 +53,8 @@ public class Panier {
         this.getFruits().set(i, f);
     }
 
+    }
+    
     public boolean estVide(){  //predicat indiquant que le panier est vide
     	if(this.getFruits().isEmpty()) {
             return true;
@@ -101,22 +103,15 @@ public class Panier {
 
     //groupe 7
     public void boycotteOrigine(String origine){  //supprime du panier tous les fruits provenant du pays origine
-        for (int i = 0; i < this.getTaillePanier(); i++)
-        {
-            Fruit f = this.getFruit(i);
-            if(f != null)
-            {
-                if(f.getOrigine() == origine){
-                    this.getFruits().remove(i);
-                }
-            }
-        }
+		ArrayList<Fruit> newFruits = getFruits();
+		newFruits.removeIf(f -> (f.getOrigine() == origine));
+		setFruits(newFruits);
     }
 
     //groupe 8
     @Override
     public boolean equals(Object o){  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
-        return false;
+        return getFruits().equals(((Panier) o).getFruits());
     }
 
     //tests
