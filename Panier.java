@@ -41,8 +41,6 @@ public class Panier {
     
     public void setFruit(int i, Fruit f){  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
 
-    }
-    
     public boolean estVide(){  //predicat indiquant que le panier est vide
 	return false;
     }
