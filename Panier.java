@@ -53,7 +53,9 @@ public class Panier {
 
     //groupe 4
     public void ajout(Fruit o) throws PanierPleinException{  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-       
+        if(this.estPlein())
+     	   throw new PanierPleinException();
+        this.getFruits().add(o);
     }
 
     //groupe 5
